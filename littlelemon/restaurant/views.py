@@ -25,7 +25,8 @@ def book(request):
 # Menu Function
 def menu(request):
     menu_data = Menu.objects.all()
-    main_data = {"menu": menu_data}
+    sorted_menu_data = sorted(menu_data, key=lambda x: x.name)
+    main_data = {"menu": sorted_menu_data}
     return render(request, 'menu.html', {"menu": main_data})
 
 
